@@ -38,7 +38,7 @@ namespace First_MVC_APP.PL.Controllers
             else
             {
                 AllRoles = await _roleManager.Roles
-                    .Where(r => r.Name.Contains(searchInput))
+                    .Where(r => r.Name.ToLower().Contains(searchInput.ToLower()))
                     .Select(role => _mapper.Map<IdentityRole, RoleViewModel>(role))
                     .ToListAsync();
             }
@@ -109,7 +109,7 @@ namespace First_MVC_APP.PL.Controllers
                 try
                 {
                     var Role = await _roleManager.FindByIdAsync(id);
-                    _mapper.Map(roleVM, Role);
+                    Role.Name = roleVM.RoleName;
                     var result = await _roleManager.UpdateAsync(Role);
                     if (result.Succeeded)
                     return RedirectToAction(nameof(Index));
