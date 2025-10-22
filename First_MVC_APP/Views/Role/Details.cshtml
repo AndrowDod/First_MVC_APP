@@ -1,0 +1,37 @@
+﻿@model RoleViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg border-0 rounded-3" style="max-width: 600px; width:100%;">
+        <div class="card-body text-center">
+
+            <div class="row text- mb-3">
+                <div class="col-6">
+                    <strong>ID:</strong>
+                    <p>@Model.Id</p>
+                </div>
+                <div class="col-6">
+                    <strong>Role Name:</strong>
+                    <p>@Model.RoleName</p>
+                </div>
+            </div>
+
+            
+            <hr />
+
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+

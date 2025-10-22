@@ -1,0 +1,108 @@
+﻿@model EmployeeViewModel
+
+@inject IUnitOfWork unitOfWork
+
+@{
+    var departments = new SelectList(unitOfWork.DepartmentRepository.GetAll(), "Id", "Name");
+}
+
+
+<!-- Name -->
+<div class="col-md-6">
+    <label asp-for="Name" class="form-label fw-bold"></label>
+    <input asp-for="Name" class="form-control" placeholder="Enter full name" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+
+<!-- Age -->
+<div class="col-md-6">
+    <label asp-for="Age" class="form-label fw-bold"></label>
+    <input asp-for="Age" class="form-control" placeholder="Enter age" />
+    <span asp-validation-for="Age" class="text-danger"></span>
+</div>
+
+<!-- Address -->
+<div class="col-md-12">
+    <label asp-for="Address" class="form-label fw-bold"></label>
+    <input asp-for="Address" class="form-control" placeholder="Enter address" />
+    <span asp-validation-for="Address" class="text-danger"></span>
+</div>
+
+<!-- Salary -->
+<div class="col-md-6">
+    <label asp-for="Salary" class="form-label fw-bold"></label>
+    <input asp-for="Salary" class="form-control" placeholder="Enter salary" />
+    <span asp-validation-for="Salary" class="text-danger"></span>
+</div>
+
+<!-- Is Active -->
+<div class="col-md-6 d-flex align-items-center mt-4">
+    <div class="form-check">
+        <input asp-for="IsActive" class="form-check-input" type="checkbox" />
+        <label asp-for="IsActive" class="form-check-label fw-bold"></label>
+    </div>
+</div>
+
+<!-- Email -->
+<div class="col-md-6">
+    <label asp-for="Email" class="form-label fw-bold"></label>
+    <input asp-for="Email" class="form-control" placeholder="Enter email" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+</div>
+
+<!-- Phone -->
+<div class="col-md-6">
+    <label asp-for="PhoneNumber" class="form-label fw-bold"></label>
+    <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
+    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+</div>
+
+<!-- Hiring Date -->
+<div class="col-md-6">
+    <label asp-for="HiringDate" class="form-label fw-bold"></label>
+    <input asp-for="HiringDate" type="date" class="form-control" />
+    <span asp-validation-for="HiringDate" class="text-danger"></span>
+</div>
+
+<!-- Department -->
+<div class="col-md-6">
+    <label asp-for="Department" class="form-label fw-bold"></label>
+    <select class="form-control" asp-for="DepartmentId" asp-items="@departments">
+        <option value="@null">-- Select Department --</option>
+    </select>
+    
+</div>
+
+<!-- Image -->
+
+<div class="col-md-6 text-center">
+    <label asp-for="Image" class="form-label fw-bold d-block"></label>
+
+    @if (Model.ImageName == null)
+    {
+        <div>
+            <input asp-for="Image" id="imageInput" type="file" class="form-control-file" accept="image/*" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+    }
+    else
+    {
+        <!-- غلاف label يربط الصورة بالـ input -->
+        <label for="imageInput" style="cursor:pointer; display:inline-block;">
+            <img id="previewImage"
+                 src="~/files/images/@Model.ImageName"
+                 width="150"
+                 class="img-fluid rounded-circle shadow-sm mb-2"
+                 style="object-fit: cover;"
+                 title="اضغط لتغيير الصورة" />
+            <!-- هنا ممكن تضيف overlay نصي لو حبيت -->
+        </label>
+
+        <!-- input مخفي (لازم يكون type="file" و id مطابق للـ for) -->
+        <input asp-for="Image" id="imageInput" type="file" class="d-none" accept="image/*" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    }
+</div>
+
+
+

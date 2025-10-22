@@ -1,0 +1,77 @@
+﻿@model SignUpViewModel
+
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="wrapper">
+    <div asp-validation-summary="All"></div>
+
+    <form asp-action="SignUp" >
+        <br />
+        <br />
+        <br />
+        <h2>SignUp</h2>
+
+        <div class="input-field">
+            <input asp-for="UserName" required>
+            <label>Enter your UserName</label>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+           <div class="input-field">
+            <input asp-for="FName" required>
+            <label>Enter your Fisrt Name</label>
+            <span asp-validation-for="FName" class="text-danger"></span>
+        </div>
+
+        <div class="input-field">
+            <input asp-for="LName" required>
+            <label>Enter your Last Name</label>
+            <span asp-validation-for="LName" class="text-danger"></span>
+        </div>
+
+        <div class="input-field">
+            <input asp-for="Email" required>
+            <label>Enter your email</label>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="input-field">
+            <input asp-for="PhoneNumber" required>
+            <label>Enter your Phone Number</label>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <div class="input-field">
+            <input asp-for="Password" required>
+            <label>Enter your password</label>
+            <span asp-validation-for="Password" class="text-danger"></span>
+            
+        </div>
+
+        <div class="input-field">
+            <input asp-for="ConfirmPassword" required>
+            <label>Confirm password</label>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div class="signup-text">
+            <label for="IsAgree">
+                <input asp-for="IsAgree" id="IsAgree">
+                <p>I Agree to the terms & Conditions</p>
+            </label>
+        </div>
+
+        <button type="submit">LogIn</button>
+        <div class="signup-text" >
+            <p>Do you have an account? <a href="SignIn">LogIn</a></p>
+        </div>
+    </form>
+</div>
+
+@section ValidatoinScriptSection {
+    <partial name="_ValidationScriptsPartial" />
+}
+

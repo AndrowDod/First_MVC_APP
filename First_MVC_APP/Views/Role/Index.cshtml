@@ -1,0 +1,63 @@
+﻿@model IEnumerable<RoleViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold text-primary">Employees List</h2>
+        <a asp-controller="Role" asp-action="Create" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add Role
+        </a>
+    </div>
+
+    <div class="row justify-content-center align-items-center mt-5">
+        <form class="row col-8 offset-2">
+            <div class="col-8">
+                <input type="text" class="form-control" name="searchInput" id="searchInput" placeholder="Search By Name" />
+            </div>
+            <div class="col-4">
+                <input type="submit" value="Search" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>@Html.DisplayNameFor(R => R.Id)</th>
+                        <th>@Html.DisplayNameFor(R => R.RoleName)</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var role in Model)
+                    {
+                        <tr>
+                            <td>@role.Id</td>
+                            <td>@role.RoleName</td>
+
+                            <partial name="_BottonsPartial" model="role.Id" />
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center shadow-sm mt-4">
+            <i class="fas fa-exclamation-circle"></i> No Roles found.
+        </div>
+    }
+</div>
+
+
+

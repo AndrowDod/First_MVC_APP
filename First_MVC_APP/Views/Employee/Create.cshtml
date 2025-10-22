@@ -1,0 +1,29 @@
+﻿@model EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<div class="container mt-5" >
+    <div class="card shadow-lg rounded-3">
+        <div class="card-header bg-dark text-white">
+            <h3 class="mb-0">Create New Employee</h3>
+        </div>
+
+        <form asp-action="Create" class="card-body row g-3" enctype="multipart/form-data">
+
+           
+            <partial name="PartialViews/CreateEditEmployeePartial" />
+
+            <!-- Buttons -->
+            <div class="col-12 text-end mt-4">
+                <button type="submit" class="btn btn-success px-4">Create</button>
+                <a asp-action="Index" class="btn btn-secondary px-4">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section ValidatoinScriptSection {
+    <partial name="_ValidationScriptsPartial" />
+}

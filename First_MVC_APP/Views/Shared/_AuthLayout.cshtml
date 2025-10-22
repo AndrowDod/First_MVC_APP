@@ -1,0 +1,17 @@
+﻿<!
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism @ViewData["Title"] Form | CodingNepal</title>
+    <link rel="stylesheet" href="~/css/AuthLayout.css" asp-append-version="true">
+</head>
+<body>
+    @RenderBody()
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("ValidatoinScriptSection", required: false)
+</body>
+</html>

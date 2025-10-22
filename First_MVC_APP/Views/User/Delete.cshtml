@@ -1,0 +1,19 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete User</h1>
+<br />
+<br />
+
+<form asp-action="Delete">
+    <div hidden asp-validation-summary="All"></div>
+    <h3 style="text-align: center;">Delete this User ?</h3>
+    <br />
+    <div style="text-align: center;">
+        <input type="submit" value="Yes" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-info">No</a>
+    </div>
+</form>
+

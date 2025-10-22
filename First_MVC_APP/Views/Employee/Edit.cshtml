@@ -1,0 +1,32 @@
+﻿@model EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<div class="container py-5">
+    <div class="col-lg-8 mx-auto">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-dark text-white rounded-top-4">
+                <h4 class="mb-0">✏️ Edit Employee</h4>
+            </div>
+
+            <form asp-action="Edit" class="card-body p-4">
+
+                <div hidden asp-validation-summary="All" class="alert alert-danger mb-4"></div>
+
+                <partial name="PartialViews/CreateEditEmployeePartial" />
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <button type="submit" class="btn btn-dark px-4 rounded-3">💾 Save</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary px-4 rounded-3">↩ Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section ValidatoinScriptSection {
+    <partial name="_ValidationScriptsPartial" />
+}
